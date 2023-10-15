@@ -9,8 +9,8 @@
 }
 
 .poke-pic {
-    width: 150px;
-    height: 150px;
+    width: 125px !important;
+    height: 125px !important;
     align-self: center;
 }
 

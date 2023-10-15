@@ -17,6 +17,7 @@ function PokeCard(props) {
                 const { data } = res
                 
                 // Set types
+                setTypes([])
                 data.types.forEach((type) => {
                     if (!ignore) {
                         const { name } = type.type
@@ -34,19 +35,12 @@ function PokeCard(props) {
         return () => {
             ignore = true
         }
-    }, [])
+    }, [pkmn])
 
     return (
-        // <div>
-            
-        //     <div></div>
-        //     <div>
-
-        //     </div>
-        // </div>
         <Card className="poke-card">
             {
-                pic !== '' && <Card.Img key={pic} src={pic} alt={`${props.pkmn.name}`}/>
+                pic !== '' && <Card.Img key={pic} src={pic} alt={`${props.pkmn.name}`} className="poke-pic"/>
             }
             <Card.Body>
                 <Card.Title className="pokemon-name">{props.pkmn.name}</Card.Title>
@@ -54,7 +48,7 @@ function PokeCard(props) {
                     {
                         types.length > 0 ?
                             types.map((type) => {
-                                return <h2 key={`${type}${props.pkmn.name}`}>{type}</h2>
+                                return <span key={`${type}${props.pkmn.name}`}>{type}</span>
                             }) :
                             <></>
                     }

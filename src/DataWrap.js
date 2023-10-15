@@ -5,17 +5,37 @@ import PokeCard from './PokeCard'
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button'
 
 function DataWrap() {
     const [pokemon, setPokemon] = useState([])
     const [skip, setSkip] = useState(0)
 
     useEffect(() => {
-        axios.get(`https://pokeapi.co/api/v2/pokemon?skip=${skip}`)
+        let ignore = false
+
+        async function fetchPokemon() {
+            await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${skip}`)
             .then((res) => {
                 setPokemon(res.data.results)
             }).catch((err) => console.log(err))
-    }, [pokemon])
+        }
+        
+        fetchPokemon()
+
+        return () => {
+            ignore = true
+        }
+    }, [skip])
+
+    const changePage = async (modifier) => {
+        if (modifier === '+') {
+            setSkip((currentSkip) => currentSkip+20)
+        } else if (modifier === '-') {
+            console.log(skip)
+            setSkip((currentSkip) => currentSkip > 0 && currentSkip-20)
+        }
+    }
 
     // Four rows
     // Five columns per row
@@ -23,13 +43,17 @@ function DataWrap() {
     // The final return needs to be a wrapper?
 
     return (
-        <Container fluid>
-            <Row>
-                <Col>
+        <Container fluid className="page-container">
+            <Row className="header-row">
+                <Col className="header-container">
                     <div id="header">PókeBoard</div>
                 </Col>
+                <Col className="page-button-container">
+                    <Button onClick={() => changePage('-')}>Previous</Button>
+                    <Button onClick={() => changePage('+')}>Next</Button>
+                </Col>
             </Row>
-            <Row lg={5} md={4} sm={2}>
+            <Row lg={5} md={4} sm={2} className="card-container">
                 {
                     pokemon.map((pkmn, ) => {
                         return <Col><PokeCard pkmn={pkmn}/></Col>
@@ -37,14 +61,6 @@ function DataWrap() {
                 }
             </Row>
         </Container>
-        // <div id="data-wrapper">
-        //     <div id="header">
-        //         PókeBoard
-        //     </div>
-        //     <div id="pokecard-container">
-
-        //     </div>
-        // </div>
     )
 }
 

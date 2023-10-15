@@ -18,3 +18,36 @@
     font-size: 2rem;
     font-family: 'Holtwood One SC', serif;
 }
+
+.page-button-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-button-container > * {
+    margin: 1rem;
+}
+
+.page-container {
+    position: absolute;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-row {
+    position: fixed;
+    z-index: 500;
+    background-color: white;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    height: 100px;
+}
+
+.card-container {
+    margin-top: 125px !important;
+}
