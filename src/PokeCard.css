@@ -1,0 +1,24 @@
+.type-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.pokemon-name {
+    font-family: 'Holtwood One SC', serif;
+    text-align: center;
+}
+
+.poke-pic {
+    width: 150px;
+    height: 150px;
+    align-self: center;
+}
+
+.pokemon-types {
+    display: flex;
+    justify-content: space-around;
+}
+
+.poke-card {
+    margin: 1rem 0rem;
+}
