@@ -49,8 +49,8 @@ function DataWrap() {
                     <div id="header">PókeBoard</div>
                 </Col>
                 <Col className="page-button-container">
-                    <Button onClick={() => changePage('-')}>Previous</Button>
-                    <Button onClick={() => changePage('+')}>Next</Button>
+                    <Button onClick={() => changePage('-')} className="prev-next-button">Previous</Button>
+                    <Button onClick={() => changePage('+')} className="prev-next-button">Next</Button>
                 </Col>
             </Row>
             <Row lg={5} md={4} sm={2} className="card-container">

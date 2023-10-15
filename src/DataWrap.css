@@ -40,14 +40,19 @@
 }
 
 .header-row {
-    position: fixed;
     z-index: 500;
     background-color: white;
     width: 100%;
-    border-bottom: 1px solid #eee;
-    height: 100px;
 }
 
-.card-container {
-    margin-top: 125px !important;
+.prev-next-button {
+    background-color: yellow !important;
+    font-family: 'Holtwood One SC', serif !important;
+    color: black !important;
+    border: none !important;
+}
+
+.prev-next-button:hover {
+    background-color: black !important;
+    color: yellow !important;
 }
