@@ -68,7 +68,7 @@ function DataWrap() {
 
     return (
         <Container fluid className="page-container">
-            <Row className="header-row">
+            <Row className="header-row" lg={3} md={1} sm={1} xs={1}>
                 <Col className="header-container">
                     <div id="header">PókeBoard</div>
                 </Col>
