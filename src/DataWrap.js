@@ -6,26 +6,51 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
 
 function DataWrap() {
     const [pokemon, setPokemon] = useState([])
     const [skip, setSkip] = useState(0)
+    const [pokemonName, setPokemonName] = useState('')
 
     useEffect(() => {
         let ignore = false
-
-        async function fetchPokemon() {
-            await axios.get(`https://pokeapi.co/api/v2/pokemon?offset=${skip}`)
-            .then((res) => {
-                setPokemon(res.data.results)
-            }).catch((err) => console.log(err))
+        async function getPokemon() {
+            try {
+                if (pokemonName === '') {
+                    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/`)
+                    setPokemon(response.data.results)
+                } else {
+                    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+                    setPokemon([response.data])
+                }
+                
+            } catch (e) {
+                console.log(e)
+            }
         }
-        
-        fetchPokemon()
+
+        getPokemon()
 
         return () => {
             ignore = true
+        }  
+    }, [pokemonName])
+
+    useEffect(() => {
+        let ignore = false
+        async function getPokemon() {
+            try {
+                const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${skip}`)
+                setPokemon(response.data.results)
+            } catch (e) {
+                console.log(e)
+            }
         }
+        getPokemon()
+        return () => {
+            ignore = true
+        }  
     }, [skip])
 
     const changePage = async (modifier) => {
@@ -37,16 +62,22 @@ function DataWrap() {
         }
     }
 
-    // Four rows
-    // Five columns per row
-    // I need to return four rows and each row needs one column
-    // The final return needs to be a wrapper?
+    const changeName = (e) => {
+        setPokemonName(e.target.value)
+    }
 
     return (
         <Container fluid className="page-container">
             <Row className="header-row">
                 <Col className="header-container">
                     <div id="header">PókeBoard</div>
+                </Col>
+                <Col className="header-container">
+                    <Form.Control 
+                        className="name-search-box"
+                        placeholder="Search by name"
+                        onChange={(e) => changeName(e)}
+                    />
                 </Col>
                 <Col className="page-button-container">
                     <Button onClick={() => changePage('-')} className="prev-next-button">Previous</Button>
@@ -55,7 +86,7 @@ function DataWrap() {
             </Row>
             <Row lg={5} md={4} sm={2} className="card-container">
                 {
-                    pokemon.map((pkmn, ) => {
+                    pokemon !== undefined && pokemon.map((pkmn, i) => {
                         return <Col><PokeCard pkmn={pkmn}/></Col>
                     })
                 }
