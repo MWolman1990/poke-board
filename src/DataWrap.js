@@ -63,7 +63,8 @@ function DataWrap() {
     }
 
     const changeName = (e) => {
-        setPokemonName(e.target.value)
+        const casedValue = e.target.value
+        setPokemonName(casedValue.toLowerCase())
     }
 
     return (
