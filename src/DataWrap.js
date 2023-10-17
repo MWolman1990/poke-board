@@ -45,10 +45,8 @@ function DataWrap() {
                     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/`)
                     setPokemon(response.data.results)
                 } else if(searchTypes.length > 0) {
-                    searchTypes.forEach(async (type) => {
-                        const response = await typeCompounder(type, skip)
-                        setPokemon(response)
-                    })
+                    const response = await typeCompounder(searchTypes, skip)
+                    setPokemon(response)
                 } else {
                     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
                     setPokemon([response.data])
@@ -79,10 +77,8 @@ function DataWrap() {
                     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${skip}`)
                     setPokemon(response.data.results)
                 } else {
-                    searchTypes.forEach(async (type) => {
-                        const response = await typeCompounder(type, skip)
-                        setPokemon(response)
-                    })
+                    const response = await typeCompounder(searchTypes, skip)
+                    setPokemon(response)
                 }
                 
             } catch (e) {

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './PokeCard.css'
 import Card from 'react-bootstrap/Card';
+import defaultExport from './resources/typeIconExport';
 
 function PokeCard(props) {
     const { pkmn } = props
@@ -9,7 +10,6 @@ function PokeCard(props) {
     const [ pic, setPic ] = useState('')
 
     useEffect(() => {
-        console.log(props)
         let ignore = false
 
         async function fetchTypes() {
@@ -49,6 +49,7 @@ function PokeCard(props) {
                     {
                         types.length > 0 ?
                             types.map((type) => {
+                                console.log(defaultExport[type])
                                 return <span key={`${type}${props.pkmn.name}`}>{type}</span>
                             }) :
                             <></>
