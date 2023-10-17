@@ -9,6 +9,7 @@ function PokeCard(props) {
     const [ pic, setPic ] = useState('')
 
     useEffect(() => {
+        console.log(props)
         let ignore = false
 
         async function fetchTypes() {
