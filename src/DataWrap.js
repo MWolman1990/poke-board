@@ -20,18 +20,17 @@ function DataWrap() {
 
     useEffect(() => {
         let ignore = false
-
-        async function getStaticTypes() {
-            try {
-                const response = await axios.get('https://pokeapi.co/api/v2/type')
-                setStaticTypes(response.data.results)
-            } catch(e) {
-                console.log(e)
+        if (!ignore) {
+            async function getStaticTypes() {
+                try {
+                    const response = await axios.get('https://pokeapi.co/api/v2/type')
+                    setStaticTypes(response.data.results)
+                } catch(e) {
+                    console.log(e)
+                }
             }
+            getStaticTypes()
         }
-
-        getStaticTypes()
-
         return () => {
             ignore = true
         }
@@ -39,26 +38,28 @@ function DataWrap() {
 
     useEffect(() => {
         let ignore = false
-        async function getPokemon() {
-            try {
-                if (pokemonName === '' && searchTypes.length === 0) {
-                    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/`)
-                    setPokemon(response.data.results)
-                } else if(searchTypes.length > 0) {
-                    const response = await typeCompounder(searchTypes, skip)
-                    setPokemon(response)
-                } else {
-                    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
-                    setPokemon([response.data])
+        if(!ignore) {
+            async function getPokemon() {
+                try {
+                    if (pokemonName === '' && searchTypes.length === 0) {
+                        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/`)
+                        setPokemon(response.data.results)
+                    } else if(searchTypes.length > 0) {
+                        const response = await typeCompounder(searchTypes, skip)
+                        setPokemon(response)
+                    } else {
+                        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+                        setPokemon([response.data])
+                    }
+                    
+                } catch (e) {
+                    console.log(e)
                 }
-                
-            } catch (e) {
-                console.log(e)
             }
+    
+            getPokemon()
         }
-
-        getPokemon()
-
+        
         return () => {
             ignore = true
         }  
@@ -71,21 +72,24 @@ function DataWrap() {
 
     useEffect(() => {
         let ignore = false
-        async function getPokemon() {
-            try {
-                if (searchTypes.length === 0) {
-                    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${skip}`)
-                    setPokemon(response.data.results)
-                } else {
-                    const response = await typeCompounder(searchTypes, skip)
-                    setPokemon(response)
+        if(!ignore) {
+            async function getPokemon() {
+                try {
+                    if (searchTypes.length === 0) {
+                        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=${skip}`)
+                        setPokemon(response.data.results)
+                    } else {
+                        const response = await typeCompounder(searchTypes, skip)
+                        setPokemon(response)
+                    }
+                    
+                } catch (e) {
+                    console.log(e)
                 }
-                
-            } catch (e) {
-                console.log(e)
             }
+            getPokemon()
         }
-        getPokemon()
+        
         return () => {
             ignore = true
         }  

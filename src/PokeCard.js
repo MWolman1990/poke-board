@@ -49,7 +49,6 @@ function PokeCard(props) {
                     {
                         types.length > 0 ?
                             types.map((type) => {
-                                console.log(defaultExport[type])
                                 return <span key={`${type}${props.pkmn.name}`}>{type}</span>
                             }) :
                             <></>
