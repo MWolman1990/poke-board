@@ -11,24 +11,39 @@ export default async function typeCompounder(types, skip) {
 
     const finalArr = []
 
+    const doublesChecked = function(data) {
+        const obj = {}
+        const counter = 0
+
+        data.forEach((item) => {
+            obj[item.pokemon.name] = obj[item.pokemon.name] ? ++obj[item.pokemon.name] : 1
+        })
+
+        return obj
+    }(firstArr)
+
+    const testArr = []
+    
+    Object.keys(doublesChecked).forEach((key) => {
+        doublesChecked[key] === 2 ? console.log(key) : console.log('')
+        if (doublesChecked[key] === 2) {
+            const newObj = {
+                name: key,
+                url: `https://pokeapi.co/api/v2/${key}`
+            }
+            testArr.push(newObj)
+        }
+    })
+    
+    console.log(testArr)
+
     firstArr.forEach((pokemonObj) => {
         const pkmn = pokemonObj.pokemon
+
         finalArr.push(pkmn)
     })
-
-    const returnTwenty = finalArr.splice(skip, 20)
+    console.log(finalArr)
+    const returnTwenty = types.length === 1 ? finalArr.splice(skip, 20) : testArr.splice(skip, 20)
 
     return returnTwenty
-    // const {data} = response
-    // const {pokemon} = data
-    // const returnTwenty = pokemon.splice(skip, 20)
-
-    // const finalArr = []
-
-    // returnTwenty.forEach((pokemonObj) => {
-    //     const pkmn = pokemonObj.pokemon
-    //     finalArr.push(pkmn)
-    // })
-
-    // return finalArr
 }

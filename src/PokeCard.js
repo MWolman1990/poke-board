@@ -3,7 +3,7 @@ import axios from 'axios'
 import './PokeCard.css'
 import Card from 'react-bootstrap/Card';
 import defaultExport from './resources/typeIconExport';
-
+import fireSvg from './resources/type-icons/fire.svg'
 function PokeCard(props) {
     const { pkmn } = props
     const [ types, setTypes ] = useState([])
