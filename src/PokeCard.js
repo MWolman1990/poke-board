@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import './PokeCard.css'
 import Card from 'react-bootstrap/Card';
-import defaultExport from './resources/typeIconExport';
-import fireSvg from './resources/type-icons/fire.svg'
+import typeImgs from './resources/typeIconExport';
+
 function PokeCard(props) {
     const { pkmn } = props
     const [ types, setTypes ] = useState([])
@@ -43,13 +43,14 @@ function PokeCard(props) {
             {
                 pic !== '' && <Card.Img key={pic} src={pic} alt={`${props.pkmn.name}`} className="poke-pic"/>
             }
-            <Card.Body>
-                <Card.Title className="pokemon-name">{props.pkmn.name}</Card.Title>
+            <Card.Title className="pokemon-name">{props.pkmn.name}</Card.Title>
+            <Card.Body className="flex-column-centered">
+                
                 <Card.Text className="pokemon-types">
                     {
                         types.length > 0 ?
                             types.map((type) => {
-                                return <span key={`${type}${props.pkmn.name}`}>{type}</span>
+                                return <span className={`${type}-bg type-icon`}><img className="type-svg" src={typeImgs[`${type}`]} alt={`${type}`}/></span>
                             }) :
                             <></>
                     }

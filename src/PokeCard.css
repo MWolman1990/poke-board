@@ -22,3 +22,9 @@
 .poke-card {
     margin: 1rem 0rem;
 }
+
+.type-svg {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
