@@ -68,6 +68,17 @@
 
 .type-checkbox {
     display: flex !important;
-    justify-content: space-between;
+    justify-content: center;
+    justify-content: space-around;
     padding: .5rem;
+}
+
+.type-dropdown {
+    background-color: black !important;
+    color: yellow !important;
+    border: 0;
+}
+
+.hollywood-font {
+    font-family: 'Holtwood One SC', serif;
 }

@@ -126,13 +126,13 @@ function DataWrap() {
             <Row className="header-row" lg={3} md={1} sm={1} xs={1}>
                 <Col className="header-container">
                     <Dropdown>
-                        <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                        <Dropdown.Toggle  className="prev-next-button" id="dropdown-basic">
                         Search by Type
                         </Dropdown.Toggle>
-                    <Dropdown.Menu>
+                    <Dropdown.Menu className="type-dropdown">
                         {
                             staticTypes.length > 0 &&
-                            staticTypes.map((type) => <div className="type-checkbox"><Form.Check onChange={() => changeType(type)}/>{type.name}</div>)
+                            staticTypes.map((type) => <div className="type-checkbox"><Form.Check onChange={() => changeType(type)}/><span className="hollywood-font">{type.name}</span></div>)
                         }
                     </Dropdown.Menu>
                     </Dropdown>
