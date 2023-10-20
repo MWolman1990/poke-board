@@ -99,7 +99,6 @@ function DataWrap() {
         if (modifier === '+') {
             setSkip((currentSkip) => currentSkip+20)
         } else if (modifier === '-') {
-            console.log(skip)
             setSkip((currentSkip) => currentSkip > 0 && currentSkip-20)
         }
     }
@@ -149,7 +148,7 @@ function DataWrap() {
                     <Button onClick={() => changePage('+')} className="prev-next-button">Next</Button>
                 </Col>
             </Row>
-            <Row lg={5} md={4} sm={2} className="card-container">
+            <Row lg={4} md={3} sm={2} className="card-container">
                 {
                     pokemon !== undefined && pokemon.map((pkmn, i) => {
                         return <Col key={i + skip}><PokeCard pkmn={pkmn}/></Col>

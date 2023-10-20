@@ -25,7 +25,6 @@ export default async function typeCompounder(types, skip) {
     const testArr = []
     
     Object.keys(doublesChecked).forEach((key) => {
-        doublesChecked[key] === 2 ? console.log(key) : console.log('')
         if (doublesChecked[key] === 2) {
             const newObj = {
                 name: key,
@@ -34,15 +33,13 @@ export default async function typeCompounder(types, skip) {
             testArr.push(newObj)
         }
     })
-    
-    console.log(testArr)
 
     firstArr.forEach((pokemonObj) => {
         const pkmn = pokemonObj.pokemon
 
         finalArr.push(pkmn)
     })
-    console.log(finalArr)
+    
     const returnTwenty = types.length === 1 ? finalArr.splice(skip, 20) : testArr.splice(skip, 20)
 
     return returnTwenty
