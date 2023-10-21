@@ -4,6 +4,7 @@ import './PokeCard.css'
 import Card from 'react-bootstrap/Card';
 import typeImgs from './resources/typeIconExport';
 import Accordion from 'react-bootstrap/Accordion'
+import DamageRelations from './DamageRelations';
 
 function PokeCard(props) {
     const { pkmn } = props
@@ -19,7 +20,7 @@ function PokeCard(props) {
                 .then((res) => {
                     const { data } = res
                     const { height, id, base_experience, weight } = data
-                    console.log(height, id, base_experience, weight)
+                    
                     // Set stats
                     setStats({ height, id, base_experience, weight })
 
@@ -57,7 +58,7 @@ function PokeCard(props) {
                     {
                         types.length > 0 ?
                             types.map((type) => {
-                                return <span className={`${type}-bg type-icon`}><img className="type-svg" src={typeImgs[`${type}`]} alt={`${type}`}/></span>
+                                return <span key={`${type}-pokecard`} className={`${type}-bg type-icon`}><img className="type-svg" src={typeImgs[`${type}`]} alt={`${type}`}/></span>
                             }) :
                             <></>
                     }
@@ -67,29 +68,31 @@ function PokeCard(props) {
                         <Accordion.Header>Stats</Accordion.Header>
                         <Accordion.Body>
                         <table style={{ width: '100%' }}>
-                            <tr>
-                                <th>id</th>
-                                <td>{stats.id}</td>
-                            </tr>
-                            <tr>
-                                <th>base experience</th>
-                                <td>{stats.base_experience}</td>
-                            </tr>
-                            <tr>
-                                <th>height</th>
-                                <td>{stats.height}</td>
-                            </tr>
-                            <tr>
-                                <th>weight</th>
-                                <td>{stats.weight}</td>
-                            </tr>
+                            <tbody>
+                                <tr>
+                                    <th>id</th>
+                                    <td>{stats.id}</td>
+                                </tr>
+                                <tr>
+                                    <th>base experience</th>
+                                    <td>{stats.base_experience}</td>
+                                </tr>
+                                <tr>
+                                    <th>height</th>
+                                    <td>{stats.height}</td>
+                                </tr>
+                                <tr>
+                                    <th>weight</th>
+                                    <td>{stats.weight}</td>
+                                </tr>
+                            </tbody>
                         </table>
                         </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="1">
                         <Accordion.Header>Damage Relations</Accordion.Header>
                         <Accordion.Body>
-                        This displays how this pokemon is affected by other types
+                            <DamageRelations types={types} name={pkmn.name}/>
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>

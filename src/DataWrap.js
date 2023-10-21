@@ -131,7 +131,7 @@ function DataWrap() {
                     <Dropdown.Menu className="type-dropdown">
                         {
                             staticTypes.length > 0 &&
-                            staticTypes.map((type) => <div className="type-checkbox"><Form.Check onChange={() => changeType(type)}/><span className="hollywood-font">{type.name}</span></div>)
+                            staticTypes.map((type) => <div key={type} className="type-checkbox"><Form.Check onChange={() => changeType(type)}/><span className="hollywood-font">{type.name}</span></div>)
                         }
                     </Dropdown.Menu>
                     </Dropdown>
@@ -148,7 +148,7 @@ function DataWrap() {
                     <Button onClick={() => changePage('+')} className="prev-next-button">Next</Button>
                 </Col>
             </Row>
-            <Row lg={4} md={3} sm={2} className="card-container">
+            <Row lg={4} md={2} sm={1} className="card-container">
                 {
                     pokemon !== undefined && pokemon.map((pkmn, i) => {
                         return <Col key={i + skip}><PokeCard pkmn={pkmn}/></Col>
