@@ -7,6 +7,9 @@
     font-family: 'Holtwood One SC', serif;
     text-align: center;
     font-size: 1.5rem;
+    /* border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-right: 0;
+    border-left: 0; */
 }
 
 .poke-pic {
@@ -28,6 +31,13 @@
     top: 5px;
     font-family: 'Holtwood One SC', serif;
     font-size: 1.5rem;
+    /* border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+    border-top: 0;
+    border-right: 0;
+    border-top-left-radius: 0;
+    border-bottom-right-radius: 0; */
+    padding: 0.25rem;
 }
 
 .pokemon-types {

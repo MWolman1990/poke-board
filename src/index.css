@@ -104,7 +104,8 @@ body {
 }
 
 .card {
-    border: none;
+  border: none;
+  box-shadow: 5px 5px 25px
 }
 
 .type-icon {

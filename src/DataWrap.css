@@ -17,6 +17,7 @@
     padding: 1rem;
     font-size: 3rem;
     font-family: 'Holtwood One SC', serif;
+    text-shadow: 5px 5px 15px #ffff00;
 }
 
 .page-button-container {
@@ -52,6 +53,7 @@
     font-family: 'Holtwood One SC', serif !important;
     color: black !important;
     border: none !important;
+    box-shadow: 5px 5px 10px
 }
 
 .prev-next-button:hover {
@@ -64,6 +66,7 @@
     border-bottom: 1px solid #ccc !important;
     text-align: center;
     width: 60% !important;
+    box-shadow: 5px 5px 10px
 }
 
 .type-checkbox {
@@ -77,6 +80,7 @@
     background-color: black !important;
     color: yellow !important;
     border: 0;
+    box-shadow: 5px 5px 10px
 }
 
 .hollywood-font {

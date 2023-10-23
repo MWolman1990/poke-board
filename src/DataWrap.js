@@ -148,7 +148,7 @@ function DataWrap() {
                     <Button onClick={() => changePage('+')} className="prev-next-button">Next</Button>
                 </Col>
             </Row>
-            <Row lg={4} md={2} sm={1} className="card-container">
+            <Row lg={5} md={4} sm={2} className="card-container">
                 {
                     pokemon !== undefined && pokemon.map((pkmn, i) => {
                         return <Col key={i + skip}><PokeCard pkmn={pkmn}/></Col>
