@@ -6,12 +6,28 @@
 .pokemon-name {
     font-family: 'Holtwood One SC', serif;
     text-align: center;
+    font-size: 1.5rem;
 }
 
 .poke-pic {
-    width: 300px !important;
-    height: 300px !important;
+    width: 50% !important;
+    /* height: 150px !important; */
     align-self: center;
+}
+
+.poke-pic-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.poke-number {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-family: 'Holtwood One SC', serif;
+    font-size: 1.5rem;
 }
 
 .pokemon-types {
@@ -27,6 +43,7 @@
     width: 25px;
     height: 25px;
     border-radius: 50%;
+    z-index: 500;
 }
 
 .damage-relations-type-container {

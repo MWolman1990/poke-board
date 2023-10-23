@@ -49,53 +49,19 @@ function PokeCard(props) {
     return (
         <Card className="poke-card">
             {
-                pic !== '' && <Card.Img key={pic} src={pic} alt={`${props.pkmn.name}`} className="poke-pic"/>
+                pic !== '' && <div className="poke-pic-container"><Card.Img key={pic} src={pic} alt={`${props.pkmn.name}`} className="poke-pic"/><span className="poke-number">#{stats.id}</span></div>
             }
-            <Card.Title className="pokemon-name">{props.pkmn.name} - #{stats.id}</Card.Title>
+            <Card.Title className="pokemon-name">{props.pkmn.name}</Card.Title>
             <Card.Body className="flex-column-centered">
-                
                 <Card.Text className="pokemon-types">
                     {
                         types.length > 0 ?
                             types.map((type) => {
-                                return <span key={`${type}-pokecard`} className={`${type}-bg type-icon`}><img className="type-svg" src={typeImgs[`${type}`]} alt={`${type}`}/></span>
+                                return <span key={`${type}-pokecard`} className={`${type}-bg type-icon`}><img className="type-svg" src={typeImgs[`${type}`]} title={`${type}`}/></span>
                             }) :
                             <></>
                     }
                 </Card.Text>
-                <Accordion className="width-100-percent">
-                    <Accordion.Item eventKey="0">
-                        <Accordion.Header>Stats</Accordion.Header>
-                        <Accordion.Body>
-                        <table style={{ width: '100%' }}>
-                            <tbody>
-                                <tr>
-                                    <th>id</th>
-                                    <td>{stats.id}</td>
-                                </tr>
-                                <tr>
-                                    <th>base experience</th>
-                                    <td>{stats.base_experience}</td>
-                                </tr>
-                                <tr>
-                                    <th>height</th>
-                                    <td>{stats.height}</td>
-                                </tr>
-                                <tr>
-                                    <th>weight</th>
-                                    <td>{stats.weight}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        </Accordion.Body>
-                    </Accordion.Item>
-                    <Accordion.Item eventKey="1">
-                        <Accordion.Header>Damage Relations</Accordion.Header>
-                        <Accordion.Body>
-                            <DamageRelations types={types} name={pkmn.name}/>
-                        </Accordion.Body>
-                    </Accordion.Item>
-                </Accordion>
             </Card.Body>
         </Card>
         

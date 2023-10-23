@@ -139,7 +139,7 @@ function DataWrap() {
                 <Col className="header-container">
                     <Form.Control 
                         className="name-search-box"
-                        placeholder="Search by name"
+                        placeholder="Search by name or number"
                         onChange={(e) => changeName(e)}
                     />
                 </Col>
